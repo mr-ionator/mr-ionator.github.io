@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mr-ionator — Portfolio</title>
+  <meta name="description" content="Personal portfolio — projects, skills and live GitHub activity." />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="mr-ionator — Portfolio" />
+  <meta property="og:description" content="Projects, skills and live GitHub activity." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Animated background layers -->
+  <div class="bg-aurora" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a href="#home" class="nav-logo">
+      <span class="nav-logo-mark">&lt;/&gt;</span>
+      <span class="nav-logo-text" data-config="name">mr-ionator</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#activity">Activity</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-inner reveal">
+        <p class="hero-eyebrow">
+          <span class="status-dot"></span>
+          <span data-config="availability">Open to opportunities</span>
+        </p>
+        <h1 class="hero-name">
+          Hi, I'm <span class="gradient-text" data-config="name">mr-ionator</span>
+        </h1>
+        <h2 class="hero-role" data-config="role">Software Engineer</h2>
+        <p class="hero-tagline" data-config="tagline"></p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View my work</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <div class="hero-stats" id="heroStats" aria-live="polite">
+          <div class="stat"><span class="stat-num" data-stat="repos">—</span><span class="stat-label">Repositories</span></div>
+          <div class="stat"><span class="stat-num" data-stat="followers">—</span><span class="stat-label">Followers</span></div>
+          <div class="stat"><span class="stat-num" data-stat="contributions">—</span><span class="stat-label">Contributions / yr</span></div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span class="mouse"><span class="wheel"></span></span>
+      </a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">01</span>
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-avatar reveal">
+          <img id="avatar" alt="Avatar" width="220" height="220" loading="lazy" />
+          <div class="about-avatar-ring"></div>
+        </div>
+        <div class="about-text reveal">
+          <div id="aboutParagraphs"></div>
+          <div class="about-meta" id="aboutMeta"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">02</span>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+      </div>
+      <div class="skills-wrap" id="skillsWrap"></div>
+    </section>
+
+    <!-- ACTIVITY / HEATMAP -->
+    <section id="activity" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">03</span>
+        <h2 class="section-title">GitHub Activity</h2>
+      </div>
+      <div class="card heatmap-card reveal">
+        <div class="heatmap-header">
+          <div>
+            <h3 class="heatmap-title"><span id="contribTotal">—</span> contributions in the last year</h3>
+            <p class="heatmap-sub">Live from GitHub — updates automatically as I push code.</p>
+          </div>
+          <a class="heatmap-profile" href="https://github.com/mr-ionator" target="_blank" rel="noopener" id="profileLink">
+            @<span data-config="githubUsername">mr-ionator</span> ↗
+          </a>
+        </div>
+        <div class="heatmap-scroll">
+          <div class="heatmap" id="heatmap" role="img" aria-label="GitHub contribution heatmap">
+            <div class="heatmap-loading">Loading contribution graph…</div>
+          </div>
+        </div>
+        <div class="heatmap-legend">
+          <span>Less</span>
+          <span class="lvl lvl-0"></span>
+          <span class="lvl lvl-1"></span>
+          <span class="lvl lvl-2"></span>
+          <span class="lvl lvl-3"></span>
+          <span class="lvl lvl-4"></span>
+          <span>More</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">04</span>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-note">Pulled live from GitHub, most recent first.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton"></div>
+      </div>
+      <div class="projects-more">
+        <button class="btn btn-ghost" id="showMoreBtn" hidden>Show all projects</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">05</span>
+        <h2 class="section-title">Let's connect</h2>
+      </div>
+      <div class="contact-card card reveal">
+        <p class="contact-lead">Have a project in mind, a question, or just want to say hi?</p>
+        <a class="contact-email" id="contactEmail" href="#">—</a>
+        <div class="contact-socials" id="contactSocials"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built with vanilla HTML, CSS &amp; JS · Live data from the GitHub API</p>
+    <p class="footer-year">© <span id="year"></span> <span data-config="name">mr-ionator</span></p>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
