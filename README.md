@@ -9,6 +9,12 @@ repo and it shows up as a project card. No build step, no server.
 
 ## Stack
 - Plain HTML + CSS + JavaScript (no framework, no build)
+- Motion: [anime.js](https://animejs.com) v3 (vendored locally in `assets/js/vendor/`, no CDN)
+  driving the hero assembly, letter-split section titles, a radial ripple reveal on the
+  heatmap, scroll choreography, magnetic buttons and a custom cursor — plus a hand-rolled
+  interactive particle-constellation canvas. All in [`assets/js/animations.js`](assets/js/animations.js).
+  Everything degrades gracefully: if anime.js or JS fails, or the visitor prefers reduced
+  motion, the plain content still shows.
 - Live data:
   - Contribution heatmap → [github-contributions-api](https://github-contributions-api.jogruber.de) (public, no token)
   - Profile + projects → GitHub REST API (public, no token)
@@ -28,6 +34,7 @@ git push
 GitHub Pages rebuilds in ~30–60 seconds. Key fields to update first:
 - `name` — currently set to your handle; change to your real display name
 - `role`, `tagline`, `about`
+- `roles` — the list of titles that cycle with the scramble effect under your name
 - `socials.linkedin` / `socials.twitter` / `socials.website` — fill in to show those links
 - `email` — shown publicly on the Contact section (clear it to hide)
 - `projects.pinned` — repo names to feature at the top

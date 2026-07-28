@@ -173,7 +173,8 @@
           cell.dataset.level = level;
           cell.dataset.count = count;
           cell.dataset.date = key;
-          if (!reduceMotion) cell.style.animationDelay = Math.min(col * 14, 900) + "ms";
+          // anime.js drives the reveal when active; otherwise use the CSS keyframe
+          if (!reduceMotion && !window.__ANIME_REVEALS__) cell.style.animationDelay = Math.min(col * 14, 900) + "ms";
         }
         frag.appendChild(cell);
         cur.setUTCDate(cur.getUTCDate() + 1);
@@ -183,6 +184,7 @@
     host.innerHTML = "";
     host.appendChild(frag);
     attachHeatmapTooltips(host);
+    document.dispatchEvent(new CustomEvent("portfolio:heatmap", { detail: { host, cols: col } }));
   }
 
   function attachHeatmapTooltips(host) {
@@ -275,6 +277,7 @@
     }).join("");
     observeReveals(grid);
     attachCardTilt(grid);
+    document.dispatchEvent(new CustomEvent("portfolio:projects", { detail: { grid } }));
   }
 
   function attachCardTilt(grid) {
@@ -384,6 +387,7 @@
     });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
   function observeReveals(root = document) {
+    if (window.__ANIME_REVEALS__) return; // anime.js owns reveals when active
     $$(".reveal:not(.in)", root).forEach((el, i) => {
       if (!el.style.transitionDelay && i % 3 && !reduceMotion) el.classList.add("d" + (i % 3));
       revealObserver.observe(el);

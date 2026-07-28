@@ -9,6 +9,8 @@ window.PORTFOLIO_CONFIG = {
   githubUsername: "mr-ionator",     // used for live heatmap + projects + avatar
   name: "mr-ionator",               // TODO: change to your real display name
   role: "Software Engineer",        // headline under your name
+  // Titles that cycle with a scramble effect under your name (edit freely):
+  roles: ["Software Engineer", "Android Developer", "Problem Solver", "Builder of Things"],
   tagline:
     "I build things across mobile, web and systems — Android apps, tooling, and everything in between.",
 

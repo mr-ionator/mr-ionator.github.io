@@ -57,7 +57,8 @@
           <span data-config="availability">Open to opportunities</span>
         </p>
         <h1 class="hero-name">
-          Hi, I'm <span class="gradient-text" data-config="name">mr-ionator</span>
+          <span class="hero-greeting">Hi, I'm</span>
+          <span class="gradient-text hero-namestring" data-config="name">mr-ionator</span>
         </h1>
         <h2 class="hero-role" data-config="role">Software Engineer</h2>
         <p class="hero-tagline" data-config="tagline"></p>
@@ -174,7 +175,30 @@
 
   <div class="tooltip" id="tooltip" role="tooltip"></div>
 
+  <script src="assets/js/vendor/anime.min.js"></script>
+  <script>
+    // Hand reveal duties to anime.js (before main.js runs) + guarantee a fallback.
+    (function () {
+      var rm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (window.anime && !rm) {
+        window.__ANIME_REVEALS__ = true;
+        document.documentElement.classList.add("anime-on");
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          if (window.__ANIM_READY__) return; // animations.js booted fine
+          document.documentElement.classList.remove("anime-on");
+          window.__ANIME_REVEALS__ = false;
+          var i, r = document.querySelectorAll(".reveal");
+          for (i = 0; i < r.length; i++) r[i].classList.add("in");
+          var c = document.querySelectorAll(".cell:not(.empty)");
+          for (i = 0; i < c.length; i++) c[i].style.opacity = "1";
+        }, 1500);
+      });
+    })();
+  </script>
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
 </body>
 </html>

@@ -61,7 +61,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    Animated background
    ========================================================================== */
 .bg-aurora {
-  position: fixed; inset: 0; z-index: -3; overflow: hidden;
+  position: fixed; inset: 0; z-index: -4; overflow: hidden;
   background: radial-gradient(120% 120% at 50% 0%, #0d0e1a 0%, var(--bg) 55%);
 }
 .blob {
@@ -453,6 +453,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================================
+   anime.js motion layer
+   ========================================================================== */
+/* particle constellation sits above the aurora, below the grid */
+.particles-canvas { position: fixed; inset: 0; z-index: -3; pointer-events: none; }
+html.anime-on .blob { opacity: 0.32; }
+
+/* custom cursor ring */
+.cursor-ring {
+  position: fixed; top: 0; left: 0; width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid rgba(124, 92, 255, 0.85); pointer-events: none; z-index: 95;
+  transform: translate(-50%, -50%); opacity: 0; mix-blend-mode: screen;
+  transition: width 0.25s var(--ease), height 0.25s var(--ease),
+              background 0.25s ease, border-color 0.25s ease, opacity 0.35s ease;
+}
+.cursor-ring.grow {
+  width: 58px; height: 58px; background: rgba(124, 92, 255, 0.12);
+  border-color: rgba(34, 211, 238, 0.9);
+}
+
+/* hero: split greeting onto its own line */
+.hero-name { perspective: 800px; }
+.hero-greeting {
+  display: block; font-size: 0.42em; font-weight: 500; letter-spacing: 0;
+  color: var(--text-dim); margin-bottom: 0.2em;
+}
+.hero-role .scramble { color: var(--cyan); }
+
+/* Initial hidden states — ONLY when anime.js is driving (class set inline).
+   If anything fails, the class is removed and everything becomes visible. */
+html.anime-on .reveal { transition: none; }
+html.anime-on .hero-inner { opacity: 1; transform: none; }
+html.anime-on .hero-eyebrow,
+html.anime-on .hero-greeting,
+html.anime-on .hero-role,
+html.anime-on .hero-tagline,
+html.anime-on .hero-cta .btn,
+html.anime-on .hero-stats .stat,
+html.anime-on .scroll-hint { opacity: 0; }
+html.anime-on .hero-namestring .char {
+  display: inline-block; opacity: 0; will-change: transform, opacity;
+  background: var(--grad); background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+html.anime-on .section-head .char { display: inline-block; }
+html.anime-on .cell { animation: none; }
+
+/* ============================================================================
    Reduced motion
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
@@ -460,4 +508,5 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .cell { opacity: 1 !important; transform: none !important; }
+  .particles-canvas, .cursor-ring { display: none !important; }
 }
